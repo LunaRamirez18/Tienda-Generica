@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="ventas.css" type ="text/css"/>
+        <link rel="stylesheet" href="app.js" type ="text/javascript">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <title>Ventas</title>
+    </head>
+    <body>
+        <header>
+            <img src="Tienda Genérica.png" alt="tienda" width="120" height="115"/>
+            <div class="titulo"><h2>Cadena de Tiendas La Genérica - Sucursal Cali/Medellín/Bogotá</h2></div> 
+        </header>
+        <nav>
+            <ul>
+                <li><a href="productos.html"><span><i class="fas fa-box-open" ></i></span> Productos</a></li>
+                <li><a href="clientes.html"><span><i class="fas fa-user-tag"></i></span> Clientes</a></li>
+                <li><a href="proveedores.html"><span><i class="fas fa-truck"></i></span> Proveedores</a></li>
+                <li><a class="active" href="ventas.html"><span><i class="fab fa-shopify"></i></span> Ventas</a></li>
+                <li><a href="reportes.html"><span><i class="fas fa-paste"></i></span> Reportes</a></li>
+                <li><a href="consolidacion.html"><span><i class="far fa-handshake"></i></span> Consolidación</a></li>
+            </ul> 
+        </nav>
+        <form action="ventas" method="post">
+            <div class="contenedor">
+                <div class="tabV">
+                    <table id="tbl">
+                        <tr>
+                            <th>Cédula:</th>
+                            <td><input type="text" id="cedula_cliente" name="cedula_cliente"></td>
+                            <td><input class="btn-V" type="submit" value="Consultar"></td>
+                            <th>Cliente:</th>
+                            <td><input type="text" id="nombre_cliente" name="nombre_cliente"></td>
+                            <th>Consec:</th>
+                            <td><input type="text" id="detalle_venta" name="detalle_venta"></td>
+                        </tr>
+                    </table>
+                    <table id ="tbl">
+                        <tr>
+                            <th>Cod. Producto</th>
+                            <th></th>
+                            <th>Nombre Producto</th>
+                            <th>Cant.</th>
+                            <th>Vlr. Total</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="codigo_producto" name="codigo_producto"></td>
+                            <td><input class="btn-V" type="submit" value="Consultar"></td>
+                            <td><input type="text" id="nombre_producto" name="nombre_producto"></td>
+                            <td><input type="text" id="cantidad_producto" name="cantidad_producto"></td>
+                            <td><input type="text" id="valor_total" name="valor_total"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="codigo_producto" name="codigo_producto"></td>
+                            <td><input class="btn-V" type="submit" value="Consultar"></td>
+                            <td><input type="text" id="nombre_producto" name="nombre_producto"></td>
+                            <td><input type="text" id="cantidad_producto" name="cantidad_producto"></td>
+                            <td><input type="text" id="valor_total" name="valor_total"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="codigo_producto" name="codigo_producto"></td>
+                            <td><input class="btn-V" type="submit" value="Consultar"></td>
+                            <td><input type="text" id="nombre_producto" name="nombre_producto"></td>
+                            <td><input type="text" id="cantidad_producto" name="cantidad_producto"></td>
+                            <td><input type="text" id="valor_total" name="valor_total"></td>
+                        </tr>
+                        <tr >
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <th>Total Venta</th>
+                            <td><input type="text" id="total_venta" name="total_venta"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input class="btnCon-V" type="submit" value="Confirmar"></td>
+                            <th>Total IVA</th>
+                            <td><input type="text" id="ivaventa" name="ivaventa"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <th>Total con IVA</th>
+                            <td><input type="text" id="valor_venta" name="valor_venta"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

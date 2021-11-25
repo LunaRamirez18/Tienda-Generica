@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="estilos.css" type ="text/css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <title>Productos</title>
+        <script></script>
+    </head>
+	<body>
+		<header>
+            <img src="Tienda Genérica.png" alt="tienda" width="120" height="115"/>
+            <div class="titulo"><h2>Cadena de Tiendas La Genérica - Sucursal Cali/Medellín/Bogotá</h2></div> 
+        </header>
+        <nav>
+            <ul>
+                <li><a class="active" href="productos.html"><span><i class="fas fa-box-open" ></i></span> Productos</a></li>
+                <li><a href="clientes.html"><span><i class="fas fa-user-tag"></i></span> Clientes</a></li>
+                <li><a href="proveedores.html"><span><i class="fas fa-truck"></i></span> Proveedores</a></li>
+                <li><a href="ventas.html"><span><i class="fab fa-shopify"></i></span> Ventas</a></li>
+                <li><a href="reportes.html"><span><i class="fas fa-paste"></i></span> Reportes</a></li>
+                <li><a href="consolidacion.html"><span><i class="far fa-handshake"></i></span> Consolidación</a></li>
+            </ul> 
+        </nav>
+        <script type="text/javascript">
+            function Upload() {
+                
+            }
+        </script>
+        <script>
+            function comenzar(){
+                
+                var entradaarchivo=document.getElementById("file");
+                var botonguardar=document.getElementById("submit-file");
+                
+                botonguardar.addEventListener("click",function(){
+                    
+                    var fileUpload = document.getElementById("file");
+                var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+                if (regex.test(fileUpload.value.toLowerCase())) {
+                    alert("Archivo aceptado");
+                    //Esta parte lee el archivo csv
+                    const reader=new FileReader();
+                    reader.onload=function(){//funcion que inicia al cargar el archivo
+                        const lines=reader.result.split('\n').map(function(line){
+                            return line.split(';')
+                        })
+                        
+                        //En esta parte se envia a la api rest
+                        for(i=0;i<lines.length;i++){
+                            
+                            fetch('http://localhost:8080/productos/guardar', {
+                                method: 'POST',
+                                body: JSON.stringify({
+                                    codigo_producto: lines[i][0],
+                                    ivacompra: lines[i][4],
+                                    nitproveedor: lines[i][2],
+                                    nombre_producto: lines[i][1],
+                                    precio_compra: lines[i][3],
+                                    precio_venta: lines[i][5]
+                                }),
+                                headers: {
+                                    "Content-type": "application/json"
+                                }});
+                            }
+                    }
+                    alert("Archivo subido");
+                    reader.readAsText(entradaarchivo.files[0]);//metodo para leer el archivo
+                } else {
+                    alert("Porfavor subir un archivo .CSV");
+                }
+                },false);
+                
+            }
+            window.addEventListener("load", comenzar,false);
+        </script>
+        <form  class = "form"  id ="myForm" action="" method="">
+            <div class="contenedor">
+                <input type="file" name="file" id="file" hidden accept=".csv" required/>
+				<label for="file" id="selector"><span><i class="fas fa-cloud-upload-alt"></i></span> seleccionar archivo:</label>
+                <div>
+                    <button type="submit" id="submit-file" class="btn">Cargar</button>
+                </div> 
+            </div>
+        </form>
+        <script src="btnfile.js"></script>
+	</body>
+</html>

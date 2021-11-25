@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="estilos.css" type ="text/css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <title>Clientes</title>
+        <script>
+    
+            function datosCliente(){
+                
+            var btnconsultar=document.getElementById("Consultar");
+            btnconsultar.addEventListener("click",function(){
+                
+                var cedula=parseInt(document.getElementById("cedula_cliente").value);
+                
+                fetch('http://localhost:8081/Cliente/Buscar/'+cedula)
+                .then(response => response.json())
+                .then(json => { 
+                    var direccion=document.getElementById("direccion_cliente");
+                    var correo=document.getElementById("email_cliente");
+                    var nombre=document.getElementById("nombre_cliente");
+                    var telefono=document.getElementById("telefono_cliente");
+                    direccion.value=json.direccion_cliente;
+                    correo.value=json.email_cliente;
+                    nombre.value=json.nombre_cliente;
+                    telefono.value=json.telefono_cliente;        	
+                });  
+                
+                },false);
+            
+            var btncrear=document.getElementById("Crear");
+            btncrear.addEventListener("click",function(){
+                
+                var cedula=parseInt(document.getElementById("cedula_cliente").value);
+                var direccion=document.getElementById("direccion_cliente").value;
+                var correo=document.getElementById("email_cliente").value;
+                var nombre=document.getElementById("nombre_cliente").value;
+                var telefono=document.getElementById("telefono_cliente").value;
+                if (direccion=="" ||correo=="" ||nombre=="" ||telefono=="") {
+                    alert("datos vacios")
+                } else {
+                    fetch('http://localhost:8081/Cliente/Crear', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        cedula_cliente: cedula,
+                        direccion_cliente: direccion,
+                        email_cliente: correo,
+                        nombre_cliente: nombre,
+                        telefono_cliente: telefono                      
+                    }),
+                    headers: {
+                        "Content-type": "application/json"
+                    }});
+                    alert("dato creado");
+                    location.reload();
+                }                
+            },false);
+            
+            var btnactualizar=document.getElementById("Actualizar");
+            btnactualizar.addEventListener("click",function(){
+                
+                var cedula=parseInt(document.getElementById("cedula_cliente").value);
+                var direccion=document.getElementById("direccion_cliente").value;
+                var correo=document.getElementById("email_cliente").value;
+                var nombre=document.getElementById("nombre_cliente").value;
+                var telefono=document.getElementById("telefono_cliente").value;
+                if (direccion=="" ||correo=="" ||nombre=="" ||telefono=="") {
+                    alert("datos vacios")
+                } else {
+                    fetch('http://localhost:8081/Cliente/Actualizar', {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        cedula_cliente: cedula,
+                        direccion_cliente: direccion,
+                        email_cliente: correo,
+                        nombre_cliente: nombre,
+                        telefono_cliente: telefono                      
+                    }),
+                    headers: {
+                        "Content-type": "application/json"
+                    }});
+                    alert("dato actualizado");
+			        location.reload();
+                }
+            },false);
+            
+            var btnborrar=document.getElementById("Borrar");
+            btnborrar.addEventListener("click",function(){
+                
+                var cedula=parseInt(document.getElementById("cedula_cliente").value);
+                                   
+                    fetch('http://localhost:8081/Cliente/Borrar/'+cedula, {
+                        method: 'DELETE'				
+                    });
+                    alert("dato borrado");
+			        location.reload();
+                },false);
+                           
+                }
+                window.addEventListener("load", datosCliente,false);
+            </script>
+    </head>
+    <body>
+        <header>
+            <img src="Tienda Genérica.png" alt="tienda" width="120" height="115"/>
+            <div class="titulo"><h2>Cadena de Tiendas La Genérica - Sucursal Cali/Medellín/Bogotá</h2></div> 
+        </header>
+        <nav>
+            <ul>
+                <li><a href="productos.html"><span><i class="fas fa-box-open" ></i></span> Productos</a></li>
+                <li><a class="active" href="clientes.html"><span><i class="fas fa-user-tag"></i></span> Clientes</a></li>
+                <li><a href="proveedores.html"><span><i class="fas fa-truck"></i></span> Proveedores</a></li>
+                <li><a href="ventas.html"><span><i class="fab fa-shopify"></i></span> Ventas</a></li>
+                <li><a href="reportes.html"><span><i class="fas fa-paste"></i></span> Reportes</a></li>
+                <li><a href="consolidacion.html"><span><i class="far fa-handshake"></i></span> Consolidación</a></li>
+            </ul> 
+        </nav>
+            <div class="contenedor">
+                <div class="table">
+                    <table id="tbl">
+                        <tr>
+                            <th>Cédula:</th>
+                            <td><input type="text" id="cedula_cliente" name="cedula_cliente"></td>
+                            <th>Teléfono:</th>
+                            <td><input type="text" id="telefono_cliente" name="telefono_cliente"></td>
+                        </tr>
+                        <tr>
+                            <th>Nombre Completo:</th>
+                            <td><input type="text" id="nombre_cliente" name="nombre_cliente"></td>
+                            <th>Correo Electrónico:</th>
+                            <td><input type="text" id="email_cliente" name="email_cliente"></td>
+                        </tr>
+                        <tr>
+                            <th>Dirección:</th>
+                            <td><input type="text" id="direccion_cliente" name="direccion_cliente"></td>
+                        </tr>
+                    </table>
+                    <div> 
+                        <br>
+                        <input class="buttons" type="submit" id ="Consultar" name="Consultar" value="Consultar">
+                        <input class="buttons" type="submit" id="Crear" name="Crear" value="Crear">
+                        <input class="buttons" type="submit" id="Actualizar" name="Actualizar" value="Actualizar">
+                        <input class="buttons" type="submit" id="Borrar" name="Borrar" value="Borrar">
+                    </div>
+                </div>
+            </div>
+    </body>
+</html>

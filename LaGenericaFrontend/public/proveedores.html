@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="estilos.css" type ="text/css"/>
+        <link rel="stylesheet" href="app.js" type ="text/javascript">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <title>Proveedores</title>
+        <script>
+    
+            function datosProveedor(){
+                
+            var btnconsultar=document.getElementById("Consultar");
+            btnconsultar.addEventListener("click",function(){
+                
+                var nit=parseInt(document.getElementById("nit_proveedor").value);
+                
+                fetch('http://localhost:8082/Proveedor/Buscar/'+nit)
+                .then(response => response.json())
+                .then(json => { 
+                    var direccion=document.getElementById("direccion_proveedor");
+                    var correo=document.getElementById("email_proveedor");
+                    var nombre=document.getElementById("nombre_proveedor");
+                    var telefono=document.getElementById("telefono_proveedor");
+                    direccion.value=json.direccion_proveedor;
+                    correo.value=json.email_proveedor;
+                    nombre.value=json.nombre_proveedor;
+                    telefono.value=json.telefono_proveedor;        	
+                });  
+                
+                },false);
+            
+            var btncrear=document.getElementById("Crear");
+            btncrear.addEventListener("click",function(){
+                
+                var nit=parseInt(document.getElementById("nit_proveedor").value);
+                var direccion=document.getElementById("direccion_proveedor").value;
+                var correo=document.getElementById("email_proveedor").value;
+                var nombre=document.getElementById("nombre_proveedor").value;
+                var telefono=document.getElementById("telefono_proveedor").value;
+                if ( direccion=="" ||correo=="" ||nombre=="" ||telefono=="") {
+                    alert("datos vacios")
+                } else {
+                    fetch('http://localhost:8082/Proveedor/Crear', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        nit_proveedor: nit,
+                        direccion_proveedor: direccion,
+                        email_proveedor: correo,
+                        nombre_proveedor: nombre,
+                        telefono_proveedor: telefono                      
+                    }),
+                    headers: {
+                        "Content-type": "application/json"
+                    }});
+                    alert("dato creado");
+                    location.reload();
+                }
+            } ,false);
+            
+            var btnactualizar=document.getElementById("Actualizar");
+            btnactualizar.addEventListener("click",function(){
+                
+                var nit=parseInt(document.getElementById("nit_proveedor").value);
+                var direccion=document.getElementById("direccion_proveedor").value;
+                var correo=document.getElementById("email_proveedor").value;
+                var nombre=document.getElementById("nombre_proveedor").value;
+                var telefono=document.getElementById("telefono_proveedor").value;
+                if ( direccion=="" ||correo=="" ||nombre=="" ||telefono=="") {
+                    alert("datos vacios")
+                } else {
+                    fetch('http://localhost:8082/Proveedor/Actualizar', {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        nit_proveedor: nit,
+                        direccion_proveedor: direccion,
+                        email_proveedor: correo,
+                        nombre_proveedor: nombre,
+                        telefono_proveedor: telefono                      
+                    }),
+                    headers: {
+                        "Content-type": "application/json"
+                    }});
+                    alert("dato actualizado");
+			        location.reload();
+                } 
+            },false);
+            
+            var btnborrar=document.getElementById("Borrar");
+            btnborrar.addEventListener("click",function(){
+                
+                var nit=parseInt(document.getElementById("nit_proveedor").value);   
+                    fetch('http://localhost:8082/Proveedor/Borrar/'+nit, {
+                        method: 'DELETE'				
+                    });
+                    alert("dato borrado");
+			        location.reload(); 
+            },false);
+                           
+            }
+            window.addEventListener("load", datosProveedor,false);
+        </script>
+    </head>
+    <body>
+        <header>
+            <img src="Tienda Genérica.png" alt="tienda" width="120" height="115"/>
+            <div class="titulo"><h2>Cadena de Tiendas La Genérica - Sucursal Cali/Medellín/Bogotá</h2></div> 
+        </header>
+        <nav>
+            <ul>
+                <li><a href="productos.html"><span><i class="fas fa-box-open" ></i></span> Productos</a></li>
+                <li><a href="clientes.html"><span><i class="fas fa-user-tag"></i></span> Clientes</a></li>
+                <li><a class ="active" href="proveedores.html"><span><i class="fas fa-truck"></i></span> Proveedores</a></li>
+                <li><a href="ventas.html"><span><i class="fab fa-shopify"></i></span> Ventas</a></li>
+                <li><a href="reportes.html"><span><i class="fas fa-paste"></i></span> Reportes</a></li>
+                <li><a href="consolidacion.html"><span><i class="far fa-handshake"></i></span> Consolidación</a></li>
+            </ul> 
+        </nav>
+            <div class="contenedor">
+                <div class="table">
+                    <table id="tbl">
+                        <tr>
+                            <th>NIT:</th>
+                            <td><input type="text" id="nit_proveedor" name="nit_proveedor"></td>
+                            <th>Teléfono:</th>
+                            <td><input type="text" id="telefono_proveedor" name="telefono_proveedor"></td>
+                        </tr>
+                        <tr>
+                            <th>Nombre Proveedor:</th>
+                            <td><input type="text" id="nombre_proveedor" name="nombre_proveedor"></td>
+                            <th>Email:</th>
+                            <td><input type="text" id="email_proveedor" name="email_proveedor"></td>
+                        </tr>
+                        <tr>
+                            <th>Dirección:</th>
+                            <td><input type="text" id="direccion_proveedor" name="direccion_proveedor"></td>
+                        </tr>
+                    </table>
+                    <div> 
+                        <br>
+                        <input class="buttons" type="submit"  id ="Consultar" name="Consultar" value="Consultar">
+                        <input class="buttons" type="submit" id="Crear" name="Crear" value="Crear">
+                        <input class="buttons" type="submit" id="Actualizar" name="Actualizar" value="Actualizar">
+                        <input class="buttons" type="submit" id="Borrar" name="Borrar" value="Borrar">
+                    </div>
+                </div>
+            </div>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="estilos.css" type ="text/css"/>
+        <link rel="stylesheet" href="app.js" type="text/javascript">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <title>Login</title>
+    </head>
+    <body>
+        <header>
+            <img src="Tienda Genérica.png" alt="tienda" width="120" height="115"/>
+            <div class="titulo"><h2>Cadena de Tiendas La Genérica - Sucursal Cali/Medellín/Bogotá</h2></div> 
+        </header>
+        <form action="/authenticate" method="POST">
+            <div class="contenedor">
+                <div class="tabla">
+                    <table cellpadding ="12">
+                        <tr>
+                            <th colspan="2">Acceso al Sistema</th>
+                        </tr>
+                        <tr>
+                            <td>Usuario:</td>
+                            <td><input type="text" id="username" name="username"></td>
+                        </tr>
+                        <tr>
+                            <td>Contraseña:</td>
+                            <td><input type="password" id="password" name="password"></td>
+                        </tr>
+                    </table>
+                    <div> <input class="button" type="submit" value="Aceptar"> <input class="button" type="submit" value="Cancelar"></div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

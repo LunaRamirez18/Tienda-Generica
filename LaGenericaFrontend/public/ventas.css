@@ -1,0 +1,220 @@
+* {
+    box-sizing: border-box;
+    transition: all 0.35s linear;
+  }
+body {
+background-image: url("https://image.freepik.com/foto-gratis/tablero-madera-tabla-mesa-vacia-fondo-borrosa-perspectiva-mesa-madera-marron-mas-desenfoque-cafeteria-fondo-puede-utilizar-simulacro-presentacion-productos-montaje-o-diseno-diseno-visual-clave_1253-952.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    width: 100%;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+  
+header {
+    background-color:  #45B39D ;
+    width: 100%;
+    left:0;
+    top:0;
+    padding:0;
+    margin:0;
+    padding-left: 20px;
+    padding-right: 20px;
+    position:absolute;
+    opacity: 0.9;
+}
+  
+img{
+    border-radius: 8px;
+}
+
+ul {
+    list-style-type: none;
+    left:0;
+    top:0;
+    margin: 0;
+    margin-top: 8.7%;
+    padding: 0;
+    width: 15%;
+    background-color: #F5B041;
+    opacity: 0.8;
+    position: absolute;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Mochiy Pop P One', sans-serif;
+    text-align: center;
+    border-bottom: 1px solid #555;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+li a.active {
+    background-color: #735325;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #735325;
+    color: white;
+}
+
+.fas{
+    font-size: 28px;
+}
+
+.fab {
+    font-size: 28px;
+}
+
+.far{
+    font-size: 28px;
+
+}
+
+.titulo {
+    float:right;
+    margin-right: 200px;
+    margin-top: 20px;
+    font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+.contenedor {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+.tabV {
+    font-size: 24px;
+    margin: 10%;
+    margin-left: 18%;
+    width: 78%;
+    padding: 2%;
+    background: #F5B041;
+    opacity: 0.8;
+    border-radius: 10px;
+    place-items: center;
+    text-align: center;
+  
+  }
+  
+table, tr,td {
+    border: 0px solid rgb(27, 26, 26);
+    border-collapse: collapse;
+    font-family: 'Amaranth', sans-serif;
+    font-size:24px;
+    text-align: center;
+    padding: 4;
+}
+
+th {
+    text-align: center;
+}
+
+#tbl {
+    width: 100%;
+}
+
+#cedula_cliente{
+    height: 28px;
+  }
+
+#nombre_cliente{
+    height: 28px;
+}
+  
+#detalle_venta {
+    height: 28px;
+    width:60px;
+}
+
+#codigo_producto {
+    height: 28px;
+    width: 145px;
+}
+
+#nombre_producto {
+    height: 28px;
+    width: 250px;
+
+}
+
+#cantidad_producto {
+    width: 50px;
+    height: 28px;
+}
+
+#valor_total {
+    height: 28px;
+}
+
+#total_venta {
+    height: 28px;
+}
+
+#ivaventa {
+    height: 28px;
+}
+
+#valor_venta {
+    height: 28px;
+}
+
+.btn-V {
+    background-color: #735325;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    text-align: center;
+    font-size: 18px;
+    margin: 4px 2px;
+    opacity: 0.9;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-family: 'Mochiy Pop P One', sans-serif;
+    margin-right: 18px;
+  }
+  
+.btn-V:hover{
+opacity: 1;
+}
+
+.btnCon-V{
+    background-color: #735325;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    font-size: 18px;
+    margin: 4px 2px;
+    opacity: 0.9;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-family: 'Mochiy Pop P One', sans-serif;
+    margin-right: 18px;
+}
+
+.btnCon-V {
+    opacity: 1;
+}
