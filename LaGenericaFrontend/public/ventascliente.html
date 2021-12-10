@@ -8,8 +8,40 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
         <title>Reportes Ventas Cliente</title>
+        <script>
+            
+
+
+            var totalventas=0;
+            function mostrarTabla(ventas){
+            const tabla=document.querySelector("#myTable");
+            var mostrartabla="";
+            ventas.forEach((venta)=>{
+                    mostrartabla+="<tr><td>"+venta.cedula_cliente+"</td>"+
+                    "<td>"+venta.nombre_cliente+"</td>"+
+                    "<td>"+venta.total_con_iva+"</td>";
+                    totalventas+=venta.total_con_iva;
+                });
+                tabla.innerHTML=mostrartabla;
+                document.getElementById("suma_total_venta").value=totalventas; 
+            }
+
+            function reportes() {
+
+                //var btnventascliente = document.getElementById("ventas_cliente")
+                //btnventascliente.addEventListener("click", function(){
+                    fetch('http://localhost:8083/ventas/listar')
+                    .then(response => response.json())
+                    .then(ventas => {
+                        mostrarTabla(ventas);
+                    }); 
+                //})
+            }
+            window.addEventListener("load" , reportes, false);
+        </script>
     </head>
     <body>
         <header>
@@ -26,5 +58,24 @@
                 <li><a href="consolidacion.html"><span><i class="far fa-handshake"></i></span> Consolidación</a></li>
             </ul> 
         </nav>
+        <div class="contenedor">
+            <div class="btn-group">
+                <a href="listadoclientes.html"><button class="listaR" id="listado_clientes">Listado de Clientes</button></a>
+                <button class="listaR" id="ventas_cliente">Ventas por Cliente</button>
+            </div>
+            <h2 class="listaV">Total de Ventas por Cliente</h2>
+            <table id="VentasCli">
+                <thead>
+                    <tr>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Valor Total Ventas</th>
+                    </tr>
+                </thead>
+                <tbody id = "myTable">
+                </tbody>
+            </table>
+            <p id="TotalVe">Total Ventas $: <input type="text" id="suma_total_venta" name= "suma_total_venta"></p>
+        </div>
     </body>
 </html>

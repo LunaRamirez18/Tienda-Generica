@@ -143,23 +143,23 @@ th {
     width:60px;
 }
 
-#codigo_producto {
+#codigo1 , #codigo2, #codigo3 {
     height: 28px;
     width: 145px;
 }
 
-#nombre_producto {
+#nombreproducto1, #nombreproducto2, #nombreproducto3 {
     height: 28px;
     width: 250px;
 
 }
 
-#cantidad_producto {
+#cantidad1, #cantidad2, #cantidad3 {
     width: 50px;
     height: 28px;
 }
 
-#valor_total {
+#valor_total1, #valor_total2, #valor_total3 {
     height: 28px;
 }
 

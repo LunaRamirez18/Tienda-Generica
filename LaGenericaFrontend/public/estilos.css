@@ -110,6 +110,14 @@ ul {
 	text-align: center;
 }
 
+#username{
+  height:24px;
+}
+
+#password{
+  height: 24px;
+}
+
 .table {
   font-size: 24px;
 	margin: 10%;
@@ -120,20 +128,6 @@ ul {
 	border-radius: 10px;
 	place-items: center;
 	text-align: center;
-}
-
-.tabV {
-  font-size: 24px;
-	margin: 10%;
-  margin-left: 18%;
-	width: 76%;
-  padding: 2%;
-	background: #F5B041;
-  opacity: 0.8;
-	border-radius: 10px;
-	place-items: center;
-	text-align: center;
-
 }
 
 table, tr,td {
@@ -156,16 +150,43 @@ th {
 
 #cedula_cliente{
   text-align: left;
+  height: 25px;
 }
 
-#detalle_venta {
-  width:60px;
+#telefono_cliente{
+  height: 25px;
 }
 
-#cantidad_producto {
-  width: 40px;
-  height: 30px;
-  padding: 2px;
+#nombre_cliente{
+  height: 25px;
+}
+
+#email_cliente {
+  height:25px;
+}
+
+#direccion_cliente {
+  height:25px;
+}
+
+#nit_proveedor{
+  height:25px;
+}
+
+#telefono_proveedor{
+  height:25px;
+}
+
+#nombre_proveedor{
+  height:25px;
+}
+
+#email_proveedor{
+  height:25px;
+}
+
+#direccion_proveedor{
+  height: 25px;
 }
 
 .button {
@@ -264,3 +285,151 @@ label span {
     opacity: 1;
 }
 
+/*Estilos Reportes, listado clientes y ventas cliente*/
+.btn-group .listaR{
+  background-color:white;
+  border: 2px solid  #FF7F50;
+  color: black;
+  padding: 10px 25px;
+  margin: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Bubblegum Sans', cursive;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 29px;
+  cursor: pointer;
+}
+
+.btn-group .listaR:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.btn-group .listaR:hover {
+  background-color: 	#FFDAB9;
+}
+
+#listado_clientes{
+  margin-top: 10%;
+}
+
+#ventas_cliente {
+  margin-top: 10%;
+}
+
+.lista{
+  font-size: 35px;
+  font-family: 'Bubblegum Sans', cursive;
+  margin-top: -30%;
+}
+
+.listaV{
+  font-size: 35px;
+  font-family: 'Bubblegum Sans', cursive;
+  margin-top: -14%;
+}
+#Clientes {
+  font-family: 'Amaranth', sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+	align-items: center;
+  margin-top: 18%;
+  position: fixed;
+}
+
+#Clientes td, #Clientes th {
+  border: 1px solid #118;
+  padding: 1px;
+}
+
+#Clientes tr {
+  background-color: #f2f2f2;
+}
+
+#Clientes th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #6495ED;
+  color: white;
+}
+
+#VentasCli {
+  font-family: 'Amaranth', sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+	align-items: center;
+  margin-top: 10%;
+  position: fixed;
+}
+
+#VentasCli td, #VentasCli th {
+  border: 1px solid #118;
+  padding: 1px;
+}
+
+#VentasCli tr{
+  background-color: #f2f2f2;
+}
+
+#VentasCli th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color:#6495ED;
+  color: white;
+}
+
+p , #TotalVe {
+  font-family: 'Amaranth', sans-serif;
+  font-size: 28px;
+  margin-top: -18px;
+  margin-right: -35%;
+}
+
+#suma_total_venta {
+  height: 28px;
+}
+
+/*estilos Consolidación*/
+.V_consolidado {
+  font-size: 35px;
+  font-family: 'Bubblegum Sans', cursive;
+  margin-top: 10%;
+}
+
+#Ciudad {
+  font-family: 'Amaranth', sans-serif;
+  border-collapse: collapse;
+  width: 35%;
+	align-items: center;
+  margin-top: 8%;
+  position: fixed;
+}
+
+#Ciudad td, #Ciudad th {
+  border: 1px solid #118;
+  padding: 1px;
+}
+
+#Ciudad tr {
+  background-color: #f2f2f2;
+}
+
+#Ciudad th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #6495ED;
+  color: white;
+}
+
+p , #VenT {
+  font-family: 'Amaranth', sans-serif;
+  font-size: 28px;
+  margin-right: -2%;
+}
+
+#Ventas_Tienda{
+  height: 28px;
+}
