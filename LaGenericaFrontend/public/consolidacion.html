@@ -31,7 +31,7 @@
                 totalventas+=ventasbogota;
                 document.getElementById("Ventas_Tienda").value=totalventas;    	
             }
-            function comenzar(){
+            function ventaTciudad(){
                 tabla=document.querySelector("#myTable");
                 fetch('http://localhost:8083/ventas/listar')
                 .then(response => response.json())
@@ -41,7 +41,7 @@
                     }
                 });
             }
-            window.addEventListener("load", comenzar,false);
+            window.addEventListener("load", ventaTciudad,false);
 
         </script>
     </head>
@@ -72,7 +72,7 @@
                 <tbody id = "myTable">
                 </tbody>
             </table>
-            <p>Total Ventas Tienda $: <input type="text" id="Ventas_Tienda" name="Ventas_Tienda"></p>
+            <p id="VenT">Total Ventas Tienda $: <input type="text" id="Ventas_Tienda" name="Ventas_Tienda"></p>
         </div>
     </body>
 </html>
